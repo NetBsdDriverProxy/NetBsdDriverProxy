@@ -2,8 +2,9 @@
 
 pushd src_analyze >/dev/null
 
-positive=$(find ../src_netbsd                     \( -name '*.c' -or -name '*.h' \) )
-negative=$(find ../src_netbsd -name '*.*' -and \! \( -name '*.c' -or -name '*.h' \) )
+dir=../src_netbsd
+positive=$(find $dir                     \( -name '*.c' -or -name '*.h' \) )
+negative=$(find $dir -name '*.*' -and \! \( -name '*.c' -or -name '*.h' -or -name '*.o' \) )
 echo 'OMITTED FILES:'
 echo $negative | tr ' ' '\n'
 echo
